@@ -24,5 +24,13 @@ class ViewController: UITableViewController {
         cell.textLabel?.text = websites[indexPath.row]
         return cell
     }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let vc = storyboard?.instantiateViewController(withIdentifier: "detailUrl") as? DetailViewController {
+            vc.selectedUrl = websites[indexPath.row]
+            vc.websites = websites
+            navigationController?.pushViewController(vc, animated: true)
+        }
+    }
 }
 
